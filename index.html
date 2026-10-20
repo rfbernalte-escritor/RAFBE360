@@ -1,0 +1,798 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>RAFBE 360 | Una marca. Infinitas posibilidades.</title>
+
+    <meta name="description" content="RAFBE 360: diseño web, literatura y servicios de escritura. Ideas que se convierten en proyectos.">
+
+    <style>
+        :root {
+            --fondo: #07111f;
+            --panel: #0d1c2e;
+            --turquesa: #35f2d0;
+            --azul: #42a5ff;
+            --blanco: #f4f8ff;
+            --gris: #aab9cc;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: "Segoe UI", Arial, sans-serif;
+            background: var(--fondo);
+            color: var(--blanco);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .fondo-luminoso {
+            position: fixed;
+            width: 500px;
+            height: 500px;
+            top: 80px;
+            right: -180px;
+            background: var(--azul);
+            opacity: 0.13;
+            filter: blur(130px);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        header {
+            width: 100%;
+            padding: 22px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+            background: rgba(7,17,31,0.85);
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            backdrop-filter: blur(16px);
+        }
+
+        .logo {
+            font-size: 1.7rem;
+            font-weight: 900;
+            letter-spacing: 1px;
+        }
+
+            .logo span {
+                color: var(--turquesa);
+            }
+
+        nav {
+            display: flex;
+            gap: 25px;
+            align-items: center;
+        }
+
+            nav a {
+                color: var(--gris);
+                font-size: 0.92rem;
+                transition: color 0.3s;
+            }
+
+                nav a:hover {
+                    color: var(--turquesa);
+                }
+
+        .boton {
+            display: inline-block;
+            padding: 13px 23px;
+            border-radius: 9px;
+            font-weight: 700;
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+
+            .boton:hover {
+                transform: translateY(-3px);
+                box-shadow: 0 8px 30px rgba(53,242,208,0.18);
+            }
+
+        .boton-principal {
+            background: linear-gradient(110deg, var(--turquesa), var(--azul));
+            color: #061321;
+        }
+
+        .boton-secundario {
+            border: 1px solid rgba(53,242,208,0.5);
+            color: var(--turquesa);
+        }
+
+        .portada {
+            min-height: 650px;
+            padding: 100px 7% 90px;
+            display: grid;
+            grid-template-columns: 1.15fr 0.85fr;
+            align-items: center;
+            gap: 45px;
+        }
+        .universo-rafbe {
+            display: block;
+            margin-bottom: 22px;
+            padding: 10px 18px;
+            border: 1px solid rgba(53, 242, 208, 0.45);
+            border-radius: 30px;
+            background: rgba(53, 242, 208, 0.08);
+            color: var(--turquesa);
+            font-size: 0.9rem;
+            font-weight: 800;
+            letter-spacing: 1.5px;
+            box-shadow: 0 0 22px rgba(53, 242, 208, 0.08);
+        }
+        .etiqueta {
+            display: inline-block;
+            color: var(--turquesa);
+            border: 1px solid rgba(53,242,208,0.3);
+            background: rgba(53,242,208,0.06);
+            padding: 7px 13px;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+            margin-bottom: 25px;
+        }
+
+        h1 {
+            font-size: clamp(3rem, 6vw, 5.7rem);
+            line-height: 1.04;
+            letter-spacing: -3px;
+            margin-bottom: 25px;
+        }
+
+            h1 span {
+                color: var(--turquesa);
+                text-shadow: 0 0 35px rgba(53,242,208,0.22);
+            }
+
+        .introduccion {
+            color: var(--gris);
+            max-width: 570px;
+            font-size: 1.1rem;
+            margin-bottom: 32px;
+        }
+
+        .acciones {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+        }
+
+        .escena {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 360px;
+            position: relative;
+        }
+
+        .orbita {
+            width: min(340px, 75vw);
+            aspect-ratio: 1;
+            border: 1px solid rgba(53,242,208,0.35);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            box-shadow: 0 0 50px rgba(53,242,208,0.08), inset 0 0 50px rgba(66,165,255,0.08);
+            animation: flotar 5s ease-in-out infinite;
+        }
+
+            .orbita::before,
+            .orbita::after {
+                content: "";
+                position: absolute;
+                border: 1px solid rgba(66,165,255,0.35);
+                border-radius: 50%;
+            }
+
+            .orbita::before {
+                width: 78%;
+                height: 118%;
+                transform: rotate(40deg);
+            }
+
+            .orbita::after {
+                width: 118%;
+                height: 78%;
+                transform: rotate(-35deg);
+            }
+
+        .nucleo {
+            width: 62%;
+            aspect-ratio: 1;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 25%, #b5fff2 0%, #35f2d0 12%, #087caa 48%, #07111f 76%);
+            box-shadow: 0 0 45px rgba(53,242,208,0.4), 0 0 110px rgba(66,165,255,0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+            .nucleo strong {
+                color: white;
+                font-size: clamp(1.4rem, 3vw, 2rem);
+                letter-spacing: 2px;
+                text-shadow: 0 2px 15px #07111f;
+            }
+
+        @keyframes flotar {
+            0%, 100% {
+                transform: translateY(0) rotate(0);
+            }
+
+            50% {
+                transform: translateY(-13px) rotate(3deg);
+            }
+        }
+
+        section {
+            padding: 85px 7%;
+        }
+
+        .encabezado-seccion {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 45px;
+        }
+
+            .encabezado-seccion h2 {
+                font-size: clamp(2rem, 4vw, 3rem);
+                line-height: 1.2;
+                margin-bottom: 15px;
+            }
+
+                .encabezado-seccion h2 span {
+                    color: var(--turquesa);
+                }
+
+            .encabezado-seccion p {
+                color: var(--gris);
+            }
+
+        .servicios {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 22px;
+        }
+
+        .tarjeta {
+            background: linear-gradient(145deg, rgba(19,42,64,0.92), rgba(10,24,40,0.92));
+            border: 1px solid rgba(255,255,255,0.09);
+            border-radius: 18px;
+            padding: 30px;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+
+            .tarjeta:hover {
+                transform: translateY(-7px);
+                border-color: rgba(53,242,208,0.55);
+            }
+
+        .icono {
+            width: 55px;
+            height: 55px;
+            border-radius: 14px;
+            background: rgba(53,242,208,0.1);
+            display: grid;
+            place-items: center;
+            font-size: 1.7rem;
+            margin-bottom: 22px;
+        }
+
+        .tarjeta h3 {
+            font-size: 1.35rem;
+            margin-bottom: 12px;
+        }
+
+        .tarjeta p {
+            color: var(--gris);
+            margin-bottom: 20px;
+        }
+
+        .enlace {
+            color: var(--turquesa);
+            font-weight: 700;
+        }
+
+        .propuesta {
+            text-align: center;
+            background: radial-gradient(ellipse at center, rgba(24,103,126,0.22), transparent 65%);
+        }
+
+        .propuesta-contenido {
+            max-width: 760px;
+            margin: auto;
+            padding: 50px 25px;
+            border: 1px solid rgba(53,242,208,0.18);
+            border-radius: 24px;
+            background: rgba(13,28,46,0.55);
+        }
+
+        .propuesta h2 {
+            font-size: clamp(2rem, 4vw, 3.2rem);
+            margin-bottom: 20px;
+        }
+
+        .propuesta p {
+            color: var(--gris);
+            margin-bottom: 28px;
+        }
+
+        footer {
+            padding: 28px 7%;
+            border-top: 1px solid rgba(255,255,255,0.08);
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            flex-wrap: wrap;
+            color: var(--gris);
+            font-size: 0.9rem;
+        }
+
+            footer strong {
+                color: var(--turquesa);
+            }
+
+        .revelar {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.7s, transform 0.7s;
+        }
+
+            .revelar.visible {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+        @media (max-width: 850px) {
+            .portada {
+                grid-template-columns: 1fr;
+                text-align: center;
+                padding-top: 75px;
+            }
+
+            .introduccion {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .acciones {
+                justify-content: center;
+            }
+
+            .escena {
+                min-height: 330px;
+            }
+
+            .servicios {
+                grid-template-columns: 1fr;
+            }
+
+            nav {
+                gap: 12px;
+            }
+
+                nav a:not(.boton) {
+                    display: none;
+                }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        /* Presentación alterna de los cuatro libros */
+        .biblioteca {
+            display: flex;
+            flex-direction: column;
+            gap: 45px;
+            margin-top: 40px;
+        }
+
+        .libro {
+            display: flex;
+            align-items: center;
+            gap: 35px;
+            padding: 25px;
+            border: 1px solid rgba(0, 220, 220, 0.2);
+            border-radius: 18px;
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+            .libro:nth-child(even) {
+                flex-direction: row-reverse;
+            }
+
+        .libro-portada {
+            width: 220px;
+            max-width: 35%;
+            height: auto;
+            flex-shrink: 0;
+            border-radius: 8px;
+            box-shadow: 0 0 25px rgba(0, 220, 220, 0.15);
+        }
+
+        .libro-info {
+            flex: 1;
+            text-align: left;
+        }
+
+            .libro-info h3 {
+                color: #00dada;
+                font-size: 1.7rem;
+                margin-bottom: 15px;
+            }
+
+            .libro-info p {
+                line-height: 1.8;
+                margin-bottom: 20px;
+            }
+
+            .libro-info a {
+                display: inline-block;
+                padding: 12px 22px;
+                border-radius: 25px;
+                background: #00dada;
+                color: #061525;
+                text-decoration: none;
+                font-weight: bold;
+                transition: transform 0.3s, box-shadow 0.3s;
+            }
+
+                .libro-info a:hover {
+                    transform: translateY(-3px);
+                    box-shadow: 0 0 18px rgba(0, 218, 218, 0.4);
+                }
+
+        /* Adaptación a móviles */
+        @media (max-width: 650px) {
+            .libro,
+            .libro:nth-child(even) {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .libro-portada {
+                max-width: 80%;
+                width: 200px;
+            }
+
+            .libro-info {
+                text-align: center;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="fondo-luminoso"></div>
+
+    <header>
+        <a class="logo" href="#inicio" aria-label="RAFBE 360, inicio">
+            RAFBE <span>360</span>
+        </a>
+
+        <nav aria-label="Navegación principal">
+            <a href="#servicios">Servicios</a>
+            <a href="#proyectos">Proyectos</a>
+            <a href="#universo">Universo RAFBE</a>
+            <a class="boton boton-principal" href="#contacto">
+                Hablemos
+            </a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="portada" id="inicio">
+            <div>
+                <div class="universo-rafbe">
+                    ✦ BIENVENIDO AL UNIVERSO RAFBE ✦
+                </div>
+                <span class="etiqueta">CREATIVIDAD SIN LÍMITES</span>
+
+                <h1>
+                    Una marca.<br>
+                    <span>Infinitas</span><br>
+                    posibilidades.
+                </h1>
+
+                <p class="introduccion">
+                    Ideas que se convierten en proyectos.
+                    Descubre un espacio donde la tecnología,
+                    la creatividad y las palabras se unen para
+                    crear nuevas oportunidades.
+                </p>
+
+                <div class="acciones">
+                    <a class="boton boton-principal" href="#servicios">
+                        Descubre lo que hacemos ↗
+                    </a>
+
+                    <a class="boton boton-secundario" href="#contacto">
+                        Hablemos de tu proyecto
+                    </a>
+                </div>
+            </div>
+
+            <div class="escena" aria-label="Emblema luminoso RAFBE 360">
+                <div class="orbita">
+                    <div class="nucleo">
+                        <strong>RAFBE<br>360</strong>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="servicios">
+            <div class="encabezado-seccion revelar">
+                <span class="etiqueta">NUESTRAS ÁREAS</span>
+                <h2>Un universo de <span>posibilidades</span></h2>
+                <p>
+                    Tres líneas de trabajo para empezar.
+                    Un proyecto preparado para seguir creciendo.
+                </p>
+            </div>
+
+            <div class="servicios">
+                <article class="tarjeta revelar">
+                    <div class="icono" aria-hidden="true">⌘</div>
+                    <h3>Diseño web</h3>
+                    <p>
+                        Páginas web modernas para negocios que
+                        quieren presentar sus servicios y llegar
+                        a nuevos clientes.
+                    </p>
+                    <a class="enlace" href="#contacto">
+                        Hablemos de tu web ↗
+                    </a>
+                </article>
+
+                <article class="tarjeta revelar">
+                    <div class="icono" aria-hidden="true">📚</div>
+                    <h3>Libros</h3>
+                    <p>
+                        Historias, novelas y proyectos literarios.
+                        Descubre mis libros y encuentra tu próxima
+                        lectura.
+                    </p>
+                    <a class="enlace" href="#proyectos">
+                        Descubre los libros ↗
+                    </a>
+                </article>
+
+                <article class="tarjeta revelar">
+                    <div class="icono" aria-hidden="true">✍️</div>
+                    <h3>Escritura y textos</h3>
+                    <p>
+                        Servicios de revisión y corrección de textos
+                        para cuidar cada palabra y comunicar mejor.
+                    </p>
+                    <a class="enlace" href="#contacto">
+                        Consulta tu proyecto ↗
+                    </a>
+                </article>
+            </div>
+        </section>
+
+
+        <section id="proyectos">
+            <div class="contenedor">
+                <h2>Mis libros publicados</h2>
+                <p class="subtitulo">
+                    Cuatro historias. Cuatro mundos por descubrir.
+                </p>
+
+                <div class="biblioteca">
+
+                    <article class="libro">
+                        <img class="libro-portada"
+                             src="https://m.media-amazon.com/images/P/B0B2KGPKTT.01._SCLZZZZZZZ_.jpg"
+                             alt="Portada de Modelos">
+                        <div class="libro-info">
+                            <h3>Modelos</h3>
+                            <p>Una historia que te invita a entrar en un mundo de personajes y emociones.</p>
+                            <a href="https://www.amazon.es/dp/B0B2KGPKTT" target="_blank" rel="noopener noreferrer">Ver en Amazon</a>
+                        </div>
+                    </article>
+
+                    <article class="libro">
+                        <img class="libro-portada"
+                             src="https://m.media-amazon.com/images/P/B0FXQQQPHM.01._SCLZZZZZZZ_.jpg"
+                             alt="Portada de Modelos 2: La red">
+                        <div class="libro-info">
+                            <h3>Modelos 2: La red</h3>
+                            <p>Una nueva historia que amplía el universo de Modelos.</p>
+                            <a href="https://www.amazon.es/dp/B0FXQQQPHM" target="_blank" rel="noopener noreferrer">Ver en Amazon</a>
+                        </div>
+                    </article>
+
+                    <article class="libro">
+                        <img class="libro-portada"
+                             src="https://m.media-amazon.com/images/P/B0DYZSHPDN.01._SCLZZZZZZZ_.jpg"
+                             alt="Portada de Entre dos mujeres">
+                        <div class="libro-info">
+                            <h3>Entre dos mujeres</h3>
+                            <p>¿Se puede amar a dos personas sin destruirlo todo?</p>
+                            <a href="https://www.amazon.es/dp/B0DYZSHPDN" target="_blank" rel="noopener noreferrer">Ver en Amazon</a>
+                        </div>
+                    </article>
+
+                    <article class="libro">
+                        <img class="libro-portada"
+                             src="https://m.media-amazon.com/images/P/B0GSQL231G.01._SCLZZZZZZZ_.jpg"
+                             alt="Portada de El cautiverio de Emma">
+                        <div class="libro-info">
+                            <h3>El cautiverio de Emma</h3>
+                            <p>Una historia para adentrarse en el misterio.</p>
+                            <a href="https://www.amazon.es/dp/B0GSQL231G" target="_blank" rel="noopener noreferrer">Ver en Amazon</a>
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <section id="universo">
+            <div class="encabezado-seccion revelar">
+                <span class="etiqueta">NUESTRO MUNDO DIGITAL</span>
+                <h2>Bienvenido al <span>Universo RAFBE</span></h2>
+                <p>
+                    Un punto de encuentro donde la creatividad,
+                    la tecnología, los libros y las nuevas ideas
+                    se convierten en proyectos.
+                </p>
+            </div>
+
+            <div class="servicios">
+
+                <article class="tarjeta revelar">
+                    <div class="icono" aria-hidden="true">🌌</div>
+                    <h3>Universo RAFBE</h3>
+                    <p>
+                        El centro que conecta nuestros proyectos
+                        y da identidad a todo lo que construimos.
+                    </p>
+                    <a class="enlace" href="#inicio">
+                        Explorar RAFBE 360 ↗
+                    </a>
+                </article>
+
+                <article class="tarjeta revelar">
+                    <div class="icono" aria-hidden="true">📚</div>
+                    <h3>Ediciones Rafa Fernández</h3>
+                    <p>
+                        Descubre mis libros, novelas y proyectos
+                        editoriales.
+                    </p>
+                    <a class="enlace"
+                       href="https://rfbernalte-escritor.github.io/ediciones-rafa-fernandez/"
+                       target="_blank"
+                       rel="noopener noreferrer">
+                        Visitar Ediciones ↗
+                    </a>
+                </article>
+
+                <article class="tarjeta revelar">
+                    <div class="icono" aria-hidden="true">💻</div>
+                    <h3>Creación de páginas web</h3>
+                    <p>
+                        Páginas web para negocios que quieren
+                        presentar sus servicios y conseguir clientes.
+                    </p>
+                    <a class="enlace"
+                       href="https://rfbernalte-escritor.github.io/Creaciondepaginasweb/"
+                       target="_blank"
+                       rel="noopener noreferrer">
+                        Descubrir el servicio ↗
+                    </a>
+                </article>
+
+                <article class="tarjeta revelar">
+                    <div class="icono" aria-hidden="true">⚙️</div>
+                    <h3>RafaOS</h3>
+                    <p>
+                        Nuestro proyecto de programación en C++,
+                        donde aprendemos y construimos paso a paso.
+                    </p>
+                    <a class="enlace"
+                       href="https://github.com/rfbernalte-escritor/RafaOS"
+                       target="_blank"
+                       rel="noopener noreferrer">
+                        Ver proyecto en GitHub ↗
+                    </a>
+                </article>
+
+            </div>
+        </section>
+
+        <section id="contacto">
+            <div class="propuesta">
+                <div class="propuesta-contenido">
+                    <span class="etiqueta">HAGAMOS ALGO GRANDE</span>
+
+                    <h2>¿Tienes un proyecto en mente?</h2>
+
+                    <p>
+                        Si necesitas una página web, ayuda con tus textos
+                        o quieres hablar sobre una idea, estaré encantado
+                        de conocer tu proyecto.
+                    </p>
+
+                    <a class="boton boton-principal"
+                        href="mailto:bernalte636@hotmail.com">Enviar correo</a>
+
+                        
+                    
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <a class="logo" href="#inicio">RAFBE <span>360</span></a>
+        <p>Una marca. Infinitas posibilidades.</p>
+        <p>© <span id="anio"></span> RAFBE 360</p>
+    </footer>
+
+    <script>
+        // Actualizar automáticamente el año del pie de página.
+        document.getElementById("anio").textContent =
+        new Date().getFullYear();
+
+        // Mostrar las secciones suavemente al desplazarse.
+        const elementos = document.querySelectorAll(".revelar");
+
+        if ("IntersectionObserver" in window) {
+        const observador = new IntersectionObserver((entradas) => {
+        entradas.forEach((entrada) => {
+        if (entrada.isIntersecting) {
+        entrada.target.classList.add("visible");
+        observador.unobserve(entrada.target);
+        }
+        });
+        }, {
+        threshold: 0.12
+        });
+
+        elementos.forEach((elemento) => {
+        observador.observe(elemento);
+        });
+        } else {
+        elementos.forEach((elemento) => {
+        elemento.classList.add("visible");
+        });
+        }
+    </script>
+</body>
+</html>
